@@ -40,8 +40,7 @@ func main() {
 	//   - RFC3339 with UTC time format.
 	router.Use(ginzap.Ginzap(logger, time.RFC3339, true))
 
-	// Logs all panic to error log
-	//   - stack means whether output the stack info.
+	// push gin logs to zap
 	router.Use(ginzap.RecoveryWithZap(logger, true))
 
 	router.StaticFile("/favicon.ico", "./favicon.ico")
